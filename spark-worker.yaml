@@ -1,0 +1,27 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    name: spark-worker
+  name: spark-worker
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        name: spark-worker
+    spec:
+      containers:
+      - image: us.gcr.io/utopian-pier-290406/spark-3:version3 
+        imagePullPolicy : "IfNotPresent"
+        name: spark-worker
+        resources:
+          limits:
+            cpu: "1"
+          requests:
+            cpu: "1"
+        ports:
+        - containerPort: 7078
+          protocol: TCP
+        command: ["/bin/bash"]
+        args: ["-c", "./start-worker.sh; sleep infinity"]

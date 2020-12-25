@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: spark-master
+  labels:
+    name: spark-master
+spec:
+  ports:
+    # the port that this service should serve on
+  - name: spark-master-webui
+    port: 8080
+    targetPort: 8080
+  - name: spark-webui
+    port: 4040
+    targetPort: 4040
+  - name: spark-master
+    port: 7077
+    targetPort: 7077
+  selector:
+    name: spark-master
