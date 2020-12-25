@@ -12,7 +12,7 @@ spec:
         name: spark-worker
     spec:
       containers:
-      - image: us.gcr.io/utopian-pier-290406/spark-3:version3 
+      - image: (image_name)
         imagePullPolicy : "IfNotPresent"
         name: spark-worker
         resources:
